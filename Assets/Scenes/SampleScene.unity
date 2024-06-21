@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 10430993}
   - component: {fileID: 10430994}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 222652914}
   - component: {fileID: 222652915}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Front Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 774275233}
   - component: {fileID: 774275234}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 838955207}
   - component: {fileID: 838955206}
   - component: {fileID: 838955210}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,7 +793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1573731053}
   - component: {fileID: 1573731054}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1954586583}
   - component: {fileID: 1954586584}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
