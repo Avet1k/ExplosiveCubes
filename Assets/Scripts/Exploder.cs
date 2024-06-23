@@ -1,15 +1,37 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Cube))]
 public class Exploder : MonoBehaviour
 {
-    private Rigidbody _rigidbody;
-    private float _force = 1000f;
-    private float _radius = 1f;
+    [SerializeField] private LayerMask _layerMask;
+
+    private Cube _cube;
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.AddExplosionForce(_force, transform.position, _radius);
+        _cube = GetComponent<Cube>();
+    }
+
+    public void DetonateInsideBox()
+    {
+        var halfExtents = transform.localScale / 2;
+        Collider[] colliders = Physics.OverlapBox(transform.position, halfExtents, Quaternion.identity,
+            _layerMask);
+
+        foreach (var collider in colliders)
+        {
+            collider.GetComponent<Rigidbody>().AddExplosionForce(_cube.ExplosionForce, transform.position, 0);
+        }
+    }
+
+    public void DetonateOuterCircle()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _cube.ExplosionRadius, _layerMask);
+
+        foreach (var collider in colliders)
+        {
+            collider.GetComponent<Rigidbody>().AddExplosionForce(_cube.ExplosionForce, transform.position,
+                _cube.ExplosionRadius);
+        }
     }
 }

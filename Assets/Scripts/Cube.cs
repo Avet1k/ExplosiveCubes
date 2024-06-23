@@ -9,14 +9,22 @@ public class Cube : MonoBehaviour
 
     public int SeparationChance { get; private set; } = 100;
 
+    public float ExplosionForce { get; private set; } = 200f;
+
+    public float ExplosionRadius { get; private set; }
+
     private void Awake()
     {
         _renderer = GetComponent<Renderer>();
+        ExplosionRadius = transform.localScale.x;
     }
 
-    public void Initiate(Color color, int chance)
+    public void Initiate(Color color, int chance, float explosionForce, float explosionRadius, Vector3 scale)
     {
-        _renderer.material.SetColor(ColorID, color); 
+        _renderer.material.SetColor(ColorID, color);
         SeparationChance = chance;
+        ExplosionForce = explosionForce;
+        ExplosionRadius = explosionRadius;
+        transform.localScale = scale;
     }
 }
