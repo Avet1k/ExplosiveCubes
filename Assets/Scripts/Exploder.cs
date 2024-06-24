@@ -6,10 +6,14 @@ public class Exploder : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
 
     private Cube _cube;
+    
+    public float Force { get; private set; } = 200f;
+    
+    public float Radius { get; private set; }
 
     private void Awake()
     {
-        _cube = GetComponent<Cube>();
+        Radius = transform.localScale.x;
     }
 
     public void DetonateInsideBox()
@@ -20,18 +24,29 @@ public class Exploder : MonoBehaviour
 
         foreach (var collider in colliders)
         {
-            collider.GetComponent<Rigidbody>().AddExplosionForce(_cube.ExplosionForce, transform.position, 0);
+            var cube = collider.GetComponent<Cube>();
+            cube.GetRigidBody().AddExplosionForce(Force, transform.position, 0);
         }
+    }
+
+    public void SetForce(float force)
+    {
+        Force = force;
+    }
+
+    public void SetRadius(float radius)
+    {
+        Radius = radius;
     }
 
     public void DetonateOuterCircle()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _cube.ExplosionRadius, _layerMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Radius, _layerMask);
 
         foreach (var collider in colliders)
         {
-            collider.GetComponent<Rigidbody>().AddExplosionForce(_cube.ExplosionForce, transform.position,
-                _cube.ExplosionRadius);
+            var cube = collider.GetComponent<Cube>();
+            cube.GetRigidBody().AddExplosionForce(Force, transform.position, Radius);
         }
     }
 }
